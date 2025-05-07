@@ -6,7 +6,8 @@ select
     s.quantity,
     p.purchase_price,
     s.quantity * p.purchase_price as purchase_cost,
-    round(s.revenue - s.quantity * p.purchase_price, 2) as margin
+    round(s.revenue - s.quantity * p.purchase_price, 2) as margin,
+    {{margin_percent('s.revenue', 's.quantity * p.purchase_price')}} AS margin_percent
 from {{ ref("stg_raw__sales")}} s
 left join {{ ref("stg_raw__product")}} p
     using (products_id)
