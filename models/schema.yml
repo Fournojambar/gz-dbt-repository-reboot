@@ -256,3 +256,13 @@ models:
         description: ras
       - name: quantity
         description: ras
+
+  - name: finance_campaigns_day
+    description: global kpi
+    columns:
+      - name: ads_margin
+        description: operational_margin - ads_cost
+      - name: average_basket
+        description: average basket cost for each day
+        tests:
+          - not_null
